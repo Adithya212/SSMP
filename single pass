@@ -29,7 +29,7 @@ PROGRAM
   fscanf(f1,"%s%s%s",la,mne,opnd);
   while(strcmp(mne,"END")!=0)
   {
-    if(strcmp(la,"-")==0)
+    if(strcmp(la,"**")==0)
     {
       fscanf(f2,"%s%s",mne1,opnd1);
       while(!feof(f2))
