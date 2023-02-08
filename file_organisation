@@ -8,29 +8,100 @@ PROGRAM
 a)
 
 #include<stdio.h>
-  2 void main()
-  3 {
-  4 int i,n;
-  5 char rt[20];
-  6 char f[20][20];
-  7 printf("\n\n\t\t\tSingle Level Directory\n");
-  8 printf("Enter the root Directory:");
-  9 gets(rt);
- 10 printf("Enter the number of files in Root:");
- 11 scanf("%d",&n);
- 12 printf("\n");
- 13 for(i=0;i<n;i++)
- 14 {
- 15 printf("Enter the File name %d:",(i+1));
- 16 scanf("%s",&f[i]);
- 17 }
- 18 printf("\t%s",rt);
- 19 printf("\n");
- 20 for(i=0;i<n;i++)
- 21 {
- 22         printf("\t  -%s\n",f[i]);
- 23 }
- 24 }
+#include<stdlib.h>
+#include<string.h>
+struct
+{
+char dname[10],fname[10][10];
+int fcnt;
+}dir;
+void main()
+{
+int i,ch,flag;
+char f[30],name[10];
+
+dir.fcnt = 0;
+printf("\nEnter name of directory -- ");
+scanf("%s", dir.dname);
+while(1)
+{
+printf("\n\n 1. Create File\t2. Delete File\t3. Search File \n 4. Display Files\t5. Exit\nEnter your choice -- ");
+scanf("%d",&ch);
+switch(ch)
+{
+case 1:
+ printf("\n Enter the name of the file -- ");
+//  gets(&name);
+ scanf("%s",name);
+ if(dir.fcnt==0){
+     strcpy(dir.fname[dir.fcnt],name);
+        // scanf("%s",dir.fname[dir.fcnt]);
+        dir.fcnt++;
+ }
+ else{
+ for(i=0;i<dir.fcnt;i++){
+    if(!strcmp(name,dir.fname[i])){
+        printf("file exists\n");
+        flag=1;
+        break;
+}
+ } 
+   if(flag==0){
+        strcpy(dir.fname[dir.fcnt],name);
+        // scanf("%s",dir.fname[dir.fcnt]);
+        dir.fcnt++;
+    }
+ }
+ 
+ 
+break;
+
+case 2: printf("\n Enter the name of the file -- ");
+scanf("%s",f);
+for(i=0;i<dir.fcnt;i++)
+{
+if(strcmp(f, dir.fname[i])==0)
+{
+printf("File %s is deleted ",f);
+strcpy(dir.fname[i],dir.fname[dir.fcnt-1]);
+break;
+}
+}
+if(i==dir.fcnt)
+printf("File %s not found",f);
+else
+dir.fcnt--;
+break;
+case 3: printf("\n Enter the name of the file -- ");
+scanf("%s",f);
+for(i=0;i<dir.fcnt;i++)
+{
+if(strcmp(f, dir.fname[i])==0)
+{
+printf("File %s is found ", f);
+break;
+}
+}
+if(i==dir.fcnt)
+printf("File %s not found",f);
+break;
+case 4: if(dir.fcnt==0)
+printf("\n Directory Empty");
+else
+{
+printf("\n The Files are -- ");
+for(i=0;i<dir.fcnt;i++)
+printf("\t%s",dir.fname[i]);
+}
+break;
+default: exit(0);
+}
+}
+}
+
+
+
+
 
 b)
 #include<stdio.h>
