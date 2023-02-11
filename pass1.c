@@ -70,3 +70,49 @@ int main()
  fclose(fop); 
  return 0; 
 }
+
+input.txt
+_________
+** START 2000
+** LDA FIVE
+** STA ALPHA
+** LDCH CHARZ
+** STCH C1
+ALPHA RESW 1
+FIVE WORD 5
+CHARZ BYTE C'Z'
+C1 RESB 1
+** END **
+
+optab.txt
+_________
+START *
+LDA 03
+STA 0F
+LDCH 53
+STCH 57
+END 
+
+symtab.txt
+_________
+ALPHA	200C
+FIVE	200F
+CHARZ	2012
+C1	2013
+
+ length.txt
+ _______
+ 20
+ 
+output.txt
+______________
+**	START	2000
+**	LDA	FIVE	2000	032018
+**	STA	ALPHA	2003	0F2015
+**	LDCH	CHARZ	2006	532019
+**	STCH	C1	2009	572019
+ALPHA	RESW	1	2012	
+FIVE	WORD	5	2015	2019
+CHARZ	BYTE	C'Z'	2018	90
+C1	RESB	1	2019	
+**	END	**	2020
