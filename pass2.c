@@ -82,3 +82,40 @@ int main()
 	fclose(fal);
 	return 0;
 }
+
+
+
+output.txt
+___________
+
+	**	START	2000
+2000	**	LDA	FIVE	
+2003	**	STA	ALPHA	
+2006	**	LDCH	CHARZ	
+2009	**	STCH	C1	
+200C	ALPHA	RESW	1	
+200F	FIVE	WORD	5	
+2012	CHARZ	BYTE	C'Z'	
+2013	C1	RESB	1	
+2014	**	END	**	
+
+symtab.txt
+---------------
+200C ALPHA
+ 200F FIVE
+ 2012 CHARZ
+ 2014 C1
+ 
+ 
+ opcode.txt
+ -----------
+ START *
+LDA 03
+STA 0F
+LDCH 53
+STCH 57
+END 
+
+length.txt
+-------
+20
