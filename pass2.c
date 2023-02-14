@@ -12,7 +12,7 @@ int main()
 	fal = fopen("assmlist.txt","w");
 
 	fscanf(fim,"\t%s\t%s\t%s",label,opcode,operand);
-	start=atoi(operand);   //strtil(operand,null,16)
+	start=atoi(operand);   //strtol(operand,null,16)
 	flen = fopen("length.txt","r");
 	fscanf(flen,"%d",&length);
 	
